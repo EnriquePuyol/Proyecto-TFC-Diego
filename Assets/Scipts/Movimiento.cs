@@ -6,6 +6,8 @@ public class Movimiento : MonoBehaviour
     NavMeshAgent agent;
     public Camera cam;
 
+    private int vida = 8;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +28,16 @@ public class Movimiento : MonoBehaviour
                 transform.LookAt(hit.point);
 
                 agent.SetDestination(hit.point);
-                Debug.Log("MOVEMENT");
+                
             }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Coche")
+        {
+            vida -= other.gameObject.GetComponent<Coche>().Dano;
+            Debug.Log("vida restante: " + vida);
         }
     }
 }
