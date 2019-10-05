@@ -39,7 +39,9 @@ public class Reloj : MonoBehaviour
         tiempoDelFrameConTimeScale = Time.deltaTime * escalaDelTiempo;
 
         tiempoAMostrarEnSegundos += tiempoDelFrameConTimeScale;
-        ActualizarReloj(tiempoAMostrarEnSegundos);
+
+        if(player.vivo == true)
+            ActualizarReloj(tiempoAMostrarEnSegundos);
     }
     public void ActualizarReloj(float tiempoEnSegundos)
     {

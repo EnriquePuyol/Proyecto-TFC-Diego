@@ -15,13 +15,13 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
             offset = Quaternion.AngleAxis(2, Vector3.up) * offset;
             transform.position = target.position - offset;
             transform.LookAt(target.position);
         }
-        else if (Input.GetKeyDown(KeyCode.Q))
+        else if (Input.GetKey(KeyCode.Q))
         {
             offset = Quaternion.AngleAxis(-2, Vector3.up) * offset;
             transform.position = target.position - offset;

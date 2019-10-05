@@ -12,6 +12,10 @@ public class Movimiento : MonoBehaviour
     public Image Corazon1, Corazon2, Corazon3, Corazon4;
 
     public bool vivo = true;
+    private bool pausado = false;
+
+    public Animator pausaAnim;
+    public Image pausaFondo;
 
     public Image pantallaDePerder;
     
@@ -27,10 +31,24 @@ public class Movimiento : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            if(pausado == false)
+            {
+                pausaAnim.SetTrigger("Pausa");
+                pausaFondo.gameObject.SetActive(true);
+                pausado = true;
+                Time.timeScale = 0;
+            }
+            else
+            {
+                pausaAnim.SetTrigger("Continuar");
+                pausaFondo.gameObject.SetActive(false);
+                pausado = false;
+                Time.timeScale = 1;
+            }
+           
         }
 
-        if(Input.GetMouseButtonDown(1) && vivo == true)
+        if(Input.GetMouseButtonDown(1) && vivo == true && pausado == false)
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -48,7 +66,10 @@ public class Movimiento : MonoBehaviour
     {
         if(other.tag == "Victoria")
         {
-            Debug.Log("Has Ganado");
+            vivo = false;
+            pantallaDePerder.gameObject.SetActive(true);
+            pantallaDePerder.GetComponentInChildren<Text>().text = "¡Has ganado!";
+            agent.SetDestination(transform.position);
         }
 
         if (other.tag == "Coche")
