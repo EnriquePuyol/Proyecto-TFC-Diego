@@ -17,9 +17,17 @@ public class CameraMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            transform.RotateAround(target.position, Vector3.up, 10 * Time.deltaTime);
+            offset = Quaternion.AngleAxis(2, Vector3.up) * offset;
+            transform.position = target.position - offset;
+            transform.LookAt(target.position);
         }
-        
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            offset = Quaternion.AngleAxis(-2, Vector3.up) * offset;
+            transform.position = target.position - offset;
+            transform.LookAt(target.position);
+        }
+
     }
 
     void FixedUpdate()

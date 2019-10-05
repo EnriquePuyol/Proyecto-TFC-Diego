@@ -17,6 +17,9 @@ public class Reloj : MonoBehaviour
     private float EscalaDeTiempoCuandoEstePausado, EscalaDeTiempoInicial;
     private bool estaPausado = false;
 
+    public Image pantallaDePerder;
+    public Movimiento player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,5 +53,11 @@ public class Reloj : MonoBehaviour
         segundos = (int)tiempoEnSegundos % 60;
         textoDelReloj = minutos.ToString("00") + ":" + segundos.ToString("00");
         myText.text = textoDelReloj;
+
+        if(minutos == 0 && segundos == 0)
+        {
+            player.vivo = false;
+            pantallaDePerder.gameObject.SetActive(true);
+        }
     }
 }

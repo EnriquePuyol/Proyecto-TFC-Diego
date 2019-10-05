@@ -4,8 +4,13 @@ using UnityEngine;
 public class Cruces : MonoBehaviour
 {
     public Cruces[] vecinos;
-    
+    [HideInInspector]
     public Transform trm;
+
+    private void Start()
+    {
+        trm = transform;
+    }
 
     public Cruces GetRandomVecino(Transform actual)
     {
