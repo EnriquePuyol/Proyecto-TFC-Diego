@@ -12,10 +12,7 @@ public class Movimiento : MonoBehaviour
     public Image Corazon1, Corazon2, Corazon3, Corazon4;
 
     public bool vivo = true;
-    private bool pausado = false;
-
-    public Animator pausaAnim;
-    public Image pausaFondo;
+    public bool pausado = false;
 
     public Image pantallaDePerder;
     
@@ -31,24 +28,13 @@ public class Movimiento : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(pausado == false)
-            {
-                pausaAnim.SetTrigger("Pausa");
-                pausaFondo.gameObject.SetActive(true);
-                pausado = true;
-                Time.timeScale = 0;
-            }
-            else
-            {
-                pausaAnim.SetTrigger("Continuar");
-                pausaFondo.gameObject.SetActive(false);
+            if (pausado)
                 pausado = false;
-                Time.timeScale = 1;
-            }
-           
+            else
+                pausado = true;
         }
 
-        if(Input.GetMouseButtonDown(1) && vivo == true && pausado == false)
+        if (Input.GetMouseButtonDown(1) && vivo == true && pausado == false)
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -103,6 +89,4 @@ public class Movimiento : MonoBehaviour
             agent.SetDestination(transform.position);
         }
     }
-
-
-}
+  }

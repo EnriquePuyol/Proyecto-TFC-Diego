@@ -17,12 +17,6 @@ public class MenuInicial : MonoBehaviour
         StartCoroutine(LoadLevel(scene));
     }
 
-    public void BackToMenu(int scene)
-    {
-        LoadingImage.gameObject.SetActive(true);
-        StartCoroutine(LoadLevel(scene));
-    }
-
     public void Options()
     {
 
