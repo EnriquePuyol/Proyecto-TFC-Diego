@@ -13,7 +13,6 @@ public class Animaciones : MonoBehaviour
     void Update()
     {
         vel = agent.velocity.magnitude;
-        Debug.Log(vel);
 
         if (vel < 1f)
         {

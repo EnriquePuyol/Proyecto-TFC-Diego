@@ -20,7 +20,6 @@ public class Movimiento : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
     }
 
     // Update is called once per frame
@@ -41,8 +40,6 @@ public class Movimiento : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit))
             {
-                transform.LookAt(hit.point);
-
                 agent.SetDestination(hit.point);                
             }
         }
