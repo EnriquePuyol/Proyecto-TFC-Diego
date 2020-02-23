@@ -12,13 +12,14 @@ public class Animaciones : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        vel = agent.velocity.magnitude / agent.speed;
+        vel = agent.velocity.magnitude;
+        Debug.Log(vel);
 
-        if (vel == 0)
+        if (vel < 1f)
         {
             anim.SetInteger("State", 0);
         }
-        else if (vel > 0.3f)
+        else if (vel > 4f)
         {
             anim.SetInteger("State", 2);
         }

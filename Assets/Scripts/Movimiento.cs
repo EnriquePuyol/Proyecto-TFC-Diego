@@ -43,8 +43,7 @@ public class Movimiento : MonoBehaviour
             {
                 transform.LookAt(hit.point);
 
-                agent.SetDestination(hit.point);
-                
+                agent.SetDestination(hit.point);                
             }
         }
     }
