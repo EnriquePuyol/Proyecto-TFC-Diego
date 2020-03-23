@@ -14,7 +14,7 @@ public class ManagerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame
@@ -55,6 +55,7 @@ public class ManagerController : MonoBehaviour
 
     public void BackToMenu(int scene)
     {
+        pausado = false;
         StartCoroutine(LoadLevel(scene));
     }
 }   

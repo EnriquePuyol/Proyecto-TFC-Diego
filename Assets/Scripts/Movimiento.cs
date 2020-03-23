@@ -85,4 +85,10 @@ public class Movimiento : MonoBehaviour
             agent.SetDestination(transform.position);
         }
     }
+
+    public void Continuar()
+    {
+        pausado = false;
+    }
+
   }
