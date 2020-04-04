@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coche
-  - Victoria
+  - VictoriaCasaPrincipal
+  - VictoriaCasaAbuela
+  - VictoriaColegio
+  - VictoriaBar
+  - VictoriaComisaria
   layers:
   - Default
   - TransparentFX
