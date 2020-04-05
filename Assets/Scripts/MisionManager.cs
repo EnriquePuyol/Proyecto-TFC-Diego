@@ -50,6 +50,25 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.tag == "MisionCasaPrincipal")
+        {
+
+        }
+        if(other.tag == "MisionCasaAbuela")
+        {
+
+        }
+        if (other.tag == "MisionColegio")
+        {
+
+        }
+        if (other.tag == "MisionBar")
+        {
+
+        }
+        if(other.tag == "MisionComisaria")
+        {
+
+        }
     }
 }
