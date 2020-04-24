@@ -1,23 +1,34 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class MisionManager : MonoBehaviour
 {
-
     public GameObject MisionCasaPrincipal;
     public GameObject MisionCasaAbuela;
     public GameObject MisionColegio;
     public GameObject MisionBar;
     public GameObject MisionComisaria;
 
-    private string MisionCasaPrincipalText = "Llega a tu casa antes de que se acabe el tiempo";
-    private string MisionCasaAbuelaText = "Llega a casa de la abuela antes de que se acabe el tiempo";
-    private string MisionColegioText = "Llega al colegio antes de que se acabe el tiempo";
-    private string MisionBarText = "Llega al bar antes de que se acabe el tiempo";
-    private string MisionComisariaText = "Llega a la comisaria antes de que se acabe el tiempo";
+    private string MisionCasaPrincipalText = "LLEGA A TU CASA";
+    private string MisionCasaAbuelaText = "LLEGA A CASA DE LA ABUELA";
+    private string MisionColegioText = "LLEGA AL COLEGIO";
+    private string MisionBarText = "LLEGA AL BAR";
+    private string MisionComisariaText = "LLEGA A LA COMISARÍA";
 
-    private int MisionActual;
+    private string ColliderCasaPrincipal = "VictoriaCasaPrincipal";
+    private string ColliderCasaAbuela= "VictoriaCasaAbuela";
+    private string ColliderColegio = "VictoriaColegio";
+    private string ColliderBar = "VictoriaBar";
+    private string ColliderComisaria = "VictoriaComisaria";
+
+    [HideInInspector]
+    public int MisionActual;
+
+    [SerializeField]
     private Text MisionText;
+
+    [SerializeField]
+    Movimiento player;
 
     // Start is called before the first frame update
     void Start()
@@ -27,17 +38,22 @@ public class NewBehaviourScript : MonoBehaviour
         {
             case 1:
                 MisionText.text = MisionCasaPrincipalText;
+                player.lugarVictoria = ColliderCasaPrincipal;
                 break;
             case 2:
                 MisionText.text = MisionCasaAbuelaText;
+                player.lugarVictoria = ColliderCasaAbuela;
                 break;
             case 3:
                 MisionText.text = MisionColegioText;
+                player.lugarVictoria = ColliderColegio;
                 break;
             case 4: MisionText.text = MisionBarText;
+                player.lugarVictoria = ColliderBar;
                 break;
             case 5:
                 MisionText.text = MisionComisariaText;
+                player.lugarVictoria = ColliderComisaria;
                 break;
         }
     }
