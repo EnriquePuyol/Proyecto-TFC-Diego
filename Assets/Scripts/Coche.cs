@@ -16,25 +16,23 @@ public class Coche : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(CruceInicial.trm.position.x, transform.position.y, CruceInicial.trm.position.z);
+        transform.position = new Vector3(CruceInicial.transform.position.x, transform.position.y, CruceInicial.transform.position.z);
         CruceActual = CruceInicial;
 
-        SiguienteCruce = CruceActual.GetRandomVecino(CruceActual.trm);
-        transform.LookAt(SiguienteCruce.trm);
+        SiguienteCruce = CruceActual.GetRandomVecino(CruceActual.transform);
+        transform.LookAt(SiguienteCruce.transform);
     }
-
-   
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, SiguienteCruce.trm.position, Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, SiguienteCruce.transform.position, Speed * Time.deltaTime);
 
-        if(transform.position == SiguienteCruce.trm.position)
+        if(transform.position == SiguienteCruce.transform.position)
         {
             CruceActual = SiguienteCruce;
-            SiguienteCruce = CruceActual.GetRandomVecino(CruceActual.trm);
-            transform.LookAt(SiguienteCruce.trm);
+            SiguienteCruce = CruceActual.GetRandomVecino(CruceActual.transform);
+            transform.LookAt(SiguienteCruce.transform);
         }
     }
 }

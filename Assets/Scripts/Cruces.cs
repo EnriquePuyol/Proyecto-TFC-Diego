@@ -4,10 +4,10 @@ using UnityEngine;
 public class Cruces : MonoBehaviour
 {
     public Cruces[] vecinos;
-    [HideInInspector]
-    public Transform trm;
 
-    private void Start()
+    Transform trm;
+
+    void Start()
     {
         trm = transform;
     }
@@ -18,9 +18,14 @@ public class Cruces : MonoBehaviour
         do
         {
             rand = Random.Range(0, vecinos.Length);
-        } while (vecinos[rand].trm == actual);
+        } while (vecinos[rand].transform == actual);
 
         return vecinos[rand];
+    }
+
+    public Transform Trm()
+    {
+        return trm;
     }
 
 }
