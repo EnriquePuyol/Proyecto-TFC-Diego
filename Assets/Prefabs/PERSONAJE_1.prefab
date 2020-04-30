@@ -90,6 +90,7 @@ MonoBehaviour:
   vivo: 1
   pausado: 0
   pantallaDePerder: {fileID: 0}
+  lugarVictoria: 
 --- !u!1001 &5378663328180821204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,6 +198,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ab410c74e3a2da5478d767f929a35158, type: 2}
+    - target: {fileID: 13700000, guid: 44744b70e34eed945a50880bc0a4f783, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d206913d35329645a5238cb8b298046, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44744b70e34eed945a50880bc0a4f783, type: 3}
 --- !u!4 &5378663328180946488 stripped
