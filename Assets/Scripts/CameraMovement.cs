@@ -27,12 +27,14 @@ public class CameraMovement : MonoBehaviour
             transform.position = target.position - offset;
             transform.LookAt(target.position);
         }
-
     }
 
     void FixedUpdate()
     {
-        Vector3 desiredPosition = target.position - offset;
+        Vector3 finaltarget = target.position;
+        finaltarget.y = 0.0f;
+
+        Vector3 desiredPosition = finaltarget - offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
     }
