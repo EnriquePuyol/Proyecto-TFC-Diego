@@ -10,7 +10,8 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
-        offset = target.position - transform.position;
+        //offset = target.position - transform.position;
+        offset = new Vector3(-9.5f, -21.8f, 10.1f);
     }
 
     void Update()

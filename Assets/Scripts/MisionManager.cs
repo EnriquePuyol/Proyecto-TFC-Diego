@@ -9,6 +9,8 @@ public class MisionManager : MonoBehaviour
     public GameObject MisionBar;
     public GameObject MisionComisaria;
 
+    public Transform[] SpawnPoints;
+
     private string MisionCasaPrincipalText = "LLEGA A TU CASA";
     private string MisionCasaAbuelaText = "LLEGA A CASA DE LA ABUELA";
     private string MisionColegioText = "LLEGA AL COLEGIO";
@@ -39,21 +41,26 @@ public class MisionManager : MonoBehaviour
             case 1:
                 MisionText.text = MisionCasaPrincipalText;
                 player.lugarVictoria = ColliderCasaPrincipal;
+                SetPlayerPosition(SpawnPoints[0].position);
                 break;
             case 2:
                 MisionText.text = MisionCasaAbuelaText;
                 player.lugarVictoria = ColliderCasaAbuela;
+                SetPlayerPosition(SpawnPoints[0].position);
                 break;
             case 3:
                 MisionText.text = MisionColegioText;
                 player.lugarVictoria = ColliderColegio;
+                SetPlayerPosition(SpawnPoints[2].position);
                 break;
             case 4: MisionText.text = MisionBarText;
                 player.lugarVictoria = ColliderBar;
+                SetPlayerPosition(SpawnPoints[1].position);
                 break;
             case 5:
                 MisionText.text = MisionComisariaText;
                 player.lugarVictoria = ColliderComisaria;
+                SetPlayerPosition(SpawnPoints[1].position);
                 break;
         }
     }
@@ -64,7 +71,14 @@ public class MisionManager : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    void SetPlayerPosition(Vector3 pos)
+    {
+        player.agent.enabled = false;
+        player.transform.localPosition = pos;
+        player.agent.enabled = true;
+    }
+
+    /*private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "MisionCasaPrincipal")
         {
@@ -86,5 +100,5 @@ public class MisionManager : MonoBehaviour
         {
 
         }
-    }
+    }*/
 }

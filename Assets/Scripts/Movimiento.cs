@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class Movimiento : MonoBehaviour
 {
-    NavMeshAgent agent;
+    [HideInInspector]
+    public NavMeshAgent agent;
     public Camera cam;
 
     private int vida = 8;
@@ -51,7 +52,6 @@ public class Movimiento : MonoBehaviour
     {
         if(other.tag == lugarVictoria)
         {
-            Debug.Log("HAS GANADO!");
             vivo = false;
             pantallaDePerder.gameObject.SetActive(true);
             pantallaDePerder.GetComponentInChildren<Text>().text = "¡Has ganado!";
@@ -61,7 +61,6 @@ public class Movimiento : MonoBehaviour
         if (other.tag == "Coche")
         {
             vida -= other.gameObject.GetComponent<Coche>().Dano;
-            Debug.Log("vida restante: " + vida);
 
             if (vida < 8)
             {
