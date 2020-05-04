@@ -60,32 +60,7 @@ public class Movimiento : MonoBehaviour
 
         if (other.tag == "Coche")
         {
-            vida -= other.gameObject.GetComponent<Coche>().Dano;
-
-            if (vida < 8)
-            {
-                Corazon4.gameObject.SetActive(false);
-            }
-
-            if (vida < 6)
-            {
-                Corazon3.gameObject.SetActive(false);
-            }
-            if (vida < 4)
-            {
-                Corazon2.gameObject.SetActive(false);
-            }
-            if (vida < 2)
-            {
-                Corazon1.gameObject.SetActive(false);
-            }
-
-            if (vida <= 0)
-            {
-                vivo = false;
-                pantallaDePerder.gameObject.SetActive(true);
-                agent.SetDestination(transform.position);
-            }
+            HacerDano(other.gameObject.GetComponent<Coche>().Dano);
         }
     }
 
@@ -94,4 +69,33 @@ public class Movimiento : MonoBehaviour
         pausado = false;
     }
 
+    public void HacerDano(int dano)
+    {
+        vida -= dano;
+
+        if (vida < 8)
+        {
+            Corazon4.gameObject.SetActive(false);
+        }
+
+        if (vida < 6)
+        {
+            Corazon3.gameObject.SetActive(false);
+        }
+        if (vida < 4)
+        {
+            Corazon2.gameObject.SetActive(false);
+        }
+        if (vida < 2)
+        {
+            Corazon1.gameObject.SetActive(false);
+        }
+
+        if (vida <= 0)
+        {
+            vivo = false;
+            pantallaDePerder.gameObject.SetActive(true);
+            agent.SetDestination(transform.position);
+        }
+    }
   }
