@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuInicial : MonoBehaviour
 {
-
     public Image LoadingImage;
 
     public Text Percentage;
-
+    public Text difficultText;
 
     public void Play(int scene)
     {
@@ -25,6 +24,11 @@ public class MenuInicial : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void CambiarDificultad()
+    {
+        difficultText.text = GameSettings.ToggleDifficulty();
     }
 
     IEnumerator LoadLevel(int scene)
