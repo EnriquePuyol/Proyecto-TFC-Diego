@@ -6,21 +6,18 @@ public static class GameSettings
 {
     static bool modoDificil = false;
 
-    static string str_facil = "Modo clásico";
-    static string str_dificil = "Modo desafío";
-
-    public static string ToggleDifficulty()
+    public static bool ToggleDifficulty()
     {
         if (modoDificil)
         {
             modoDificil = false;
-            return str_facil;
         }
         else
         {
             modoDificil = true;
-            return str_dificil;
-        }            
+        }
+
+        return modoDificil;
     }
 
     public static bool IsGameDifficult()

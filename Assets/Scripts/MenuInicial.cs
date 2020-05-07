@@ -7,6 +7,8 @@ public class MenuInicial : MonoBehaviour
 {
     public Image LoadingImage;
 
+    public Image EnableChallengeMode;
+
     public Text Percentage;
     public Text difficultText;
 
@@ -28,7 +30,10 @@ public class MenuInicial : MonoBehaviour
 
     public void CambiarDificultad()
     {
-        difficultText.text = GameSettings.ToggleDifficulty();
+        if(GameSettings.ToggleDifficulty() == true)
+            EnableChallengeMode.gameObject.SetActive(true);
+        else
+            EnableChallengeMode.gameObject.SetActive(false);
     }
 
     IEnumerator LoadLevel(int scene)
