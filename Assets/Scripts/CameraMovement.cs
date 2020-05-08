@@ -30,7 +30,7 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         Vector3 finaltarget = target.position;
         finaltarget.y = 0.0f;

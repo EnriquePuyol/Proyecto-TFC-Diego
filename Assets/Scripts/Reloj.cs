@@ -23,6 +23,12 @@ public class Reloj : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GameSettings.IsGameDifficult())
+        {
+            escalaDelTiempo = -1f;
+            tiempoInicial = 300;
+        }
+
         EscalaDeTiempoInicial = escalaDelTiempo;
 
         myText = GetComponent<Text>();
