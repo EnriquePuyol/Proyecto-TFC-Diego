@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class MisionManager : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class MisionManager : MonoBehaviour
     private string ColliderBar = "VictoriaBar";
     private string ColliderComisaria = "VictoriaComisaria";
 
+    List<int> misionsCompleted = new List<int>();
+    int misionesCompletadas = -1;
+
     [HideInInspector]
     public int MisionActual;
 
@@ -32,37 +36,25 @@ public class MisionManager : MonoBehaviour
     [SerializeField]
     Movimiento player;
 
+
+    // Singleton
+    [HideInInspector]
+    public static MisionManager instance;
+
+    void Awake()
+    {
+        if(instance != this && instance != null)
+        {
+            Destroy(this);
+        }
+
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        MisionActual = Random.Range(1,6);
-        switch (MisionActual)
-        {
-            case 1:
-                MisionText.text = MisionCasaPrincipalText;
-                player.lugarVictoria = ColliderCasaPrincipal;
-                SetPlayerPosition(SpawnPoints[0].position);
-                break;
-            case 2:
-                MisionText.text = MisionCasaAbuelaText;
-                player.lugarVictoria = ColliderCasaAbuela;
-                SetPlayerPosition(SpawnPoints[0].position);
-                break;
-            case 3:
-                MisionText.text = MisionColegioText;
-                player.lugarVictoria = ColliderColegio;
-                SetPlayerPosition(SpawnPoints[2].position);
-                break;
-            case 4: MisionText.text = MisionBarText;
-                player.lugarVictoria = ColliderBar;
-                SetPlayerPosition(SpawnPoints[1].position);
-                break;
-            case 5:
-                MisionText.text = MisionComisariaText;
-                player.lugarVictoria = ColliderComisaria;
-                SetPlayerPosition(SpawnPoints[1].position);
-                break;
-        }
+        CompletarMision();
     }
 
     // Update is called once per frame
@@ -78,27 +70,64 @@ public class MisionManager : MonoBehaviour
         player.agent.enabled = true;
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    public bool CompletarMision()
     {
-        if(other.tag == "MisionCasaPrincipal")
-        {
+        misionesCompletadas++;
 
-        }
-        if(other.tag == "MisionCasaAbuela")
-        {
+        if (misionesCompletadas >= 5)
+            return true;
 
-        }
-        if (other.tag == "MisionColegio")
-        {
+        bool ok = true;
 
-        }
-        if (other.tag == "MisionBar")
+        do
         {
+            ok = true;
 
-        }
-        if(other.tag == "MisionComisaria")
+            MisionActual = Random.Range(1, 6);
+
+            for (int i = 0; i < misionsCompleted.Count; i++)
+            {
+                if (misionsCompleted.Contains(MisionActual))
+                    ok = false;
+            }
+
+
+        } while (!ok);
+
+        switch (MisionActual)
         {
-
+            case 1:
+                MisionText.text = MisionCasaPrincipalText;
+                player.lugarVictoria = ColliderCasaPrincipal;
+                if(misionesCompletadas == 0)
+                    SetPlayerPosition(SpawnPoints[0].position);
+                break;
+            case 2:
+                MisionText.text = MisionCasaAbuelaText;
+                player.lugarVictoria = ColliderCasaAbuela;
+                if (misionesCompletadas == 0)
+                    SetPlayerPosition(SpawnPoints[0].position);
+                break;
+            case 3:
+                MisionText.text = MisionColegioText;
+                player.lugarVictoria = ColliderColegio;
+                if (misionesCompletadas == 0)
+                    SetPlayerPosition(SpawnPoints[2].position);
+                break;
+            case 4:
+                MisionText.text = MisionBarText;
+                player.lugarVictoria = ColliderBar;
+                if (misionesCompletadas == 0)
+                    SetPlayerPosition(SpawnPoints[1].position);
+                break;
+            case 5:
+                MisionText.text = MisionComisariaText;
+                player.lugarVictoria = ColliderComisaria;
+                if (misionesCompletadas == 0)
+                    SetPlayerPosition(SpawnPoints[1].position);
+                break;
         }
-    }*/
+
+        return false;
+    }
 }

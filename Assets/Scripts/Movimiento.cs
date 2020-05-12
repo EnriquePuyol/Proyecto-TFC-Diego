@@ -52,10 +52,13 @@ public class Movimiento : MonoBehaviour
     {
         if(other.tag == lugarVictoria)
         {
-            vivo = false;
-            pantallaDePerder.gameObject.SetActive(true);
-            pantallaDePerder.GetComponentInChildren<Text>().text = "¡Has ganado!";
-            agent.SetDestination(transform.position);
+            if (MisionManager.instance.CompletarMision())
+            {
+                vivo = false;
+                pantallaDePerder.gameObject.SetActive(true);
+                pantallaDePerder.GetComponentInChildren<Text>().text = "¡Has ganado!";
+                agent.SetDestination(transform.position);
+            }
         }
 
         if (other.tag == "Coche")
