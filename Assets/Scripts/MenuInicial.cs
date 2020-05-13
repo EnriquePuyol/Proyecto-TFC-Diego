@@ -7,12 +7,22 @@ public class MenuInicial : MonoBehaviour
 {
     public Image LoadingImage;
 
-    public Image EnableChallengeMode;
-
     public Text Percentage;
     public Text difficultText;
 
-    public void Play(int scene)
+    public void PlayEasy(int scene)
+    {
+        GameSettings.SetGameDifficulty(false);
+        LoadGame(scene);
+    }
+
+    public void PlayChallenge(int scene)
+    {
+        GameSettings.SetGameDifficulty(true);
+        LoadGame(scene);
+    }
+
+    public void LoadGame(int scene)
     {
         LoadingImage.gameObject.SetActive(true);
         StartCoroutine(LoadLevel(scene));
@@ -26,14 +36,6 @@ public class MenuInicial : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-    }
-
-    public void CambiarDificultad()
-    {
-        if(GameSettings.ToggleDifficulty() == true)
-            EnableChallengeMode.gameObject.SetActive(true);
-        else
-            EnableChallengeMode.gameObject.SetActive(false);
     }
 
     IEnumerator LoadLevel(int scene)

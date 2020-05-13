@@ -6,18 +6,9 @@ public static class GameSettings
 {
     static bool modoDificil = false;
 
-    public static bool ToggleDifficulty()
+    public static void SetGameDifficulty(bool dif)
     {
-        if (modoDificil)
-        {
-            modoDificil = false;
-        }
-        else
-        {
-            modoDificil = true;
-        }
-
-        return modoDificil;
+        modoDificil = dif;
     }
 
     public static bool IsGameDifficult()
