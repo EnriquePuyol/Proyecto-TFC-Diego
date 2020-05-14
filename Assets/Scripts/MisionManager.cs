@@ -73,6 +73,7 @@ public class MisionManager : MonoBehaviour
     public bool CompletarMision()
     {
         misionesCompletadas++;
+        Debug.Log("Misiones completadas: " + misionesCompletadas);
 
         if (misionesCompletadas >= 5)
             return true;

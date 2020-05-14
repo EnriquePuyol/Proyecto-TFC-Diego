@@ -96,9 +96,14 @@ public class Movimiento : MonoBehaviour
 
         if (vida <= 0)
         {
-            vivo = false;
-            pantallaDePerder.gameObject.SetActive(true);
-            agent.SetDestination(transform.position);
+            Perder();
         }
+    }
+
+    public void Perder()
+    {
+        vivo = false;
+        pantallaDePerder.gameObject.SetActive(true);
+        agent.SetDestination(transform.position);
     }
   }

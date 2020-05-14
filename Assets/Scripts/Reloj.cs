@@ -55,7 +55,11 @@ public class Reloj : MonoBehaviour
         int segundos = 0;
         string textoDelReloj;
 
-        if (tiempoEnSegundos < 0) tiempoEnSegundos = 0;
+        if (tiempoEnSegundos < 0)
+        {
+            tiempoEnSegundos = 0;
+            player.Perder();
+        }
 
         minutos = (int)tiempoEnSegundos / 60;
         segundos = (int)tiempoEnSegundos % 60;
