@@ -36,6 +36,8 @@ public class MisionManager : MonoBehaviour
     [SerializeField]
     Movimiento player;
 
+    [SerializeField]
+    Animator MisionAnim;
 
     // Singleton
     [HideInInspector]
@@ -73,7 +75,6 @@ public class MisionManager : MonoBehaviour
     public bool CompletarMision()
     {
         misionesCompletadas++;
-        Debug.Log("Misiones completadas: " + misionesCompletadas);
 
         if (misionesCompletadas >= 5)
             return true;
@@ -94,6 +95,9 @@ public class MisionManager : MonoBehaviour
 
 
         } while (!ok);
+
+        if (misionesCompletadas > 0)
+            MisionAnim.SetTrigger("NewMision");
 
         switch (MisionActual)
         {
