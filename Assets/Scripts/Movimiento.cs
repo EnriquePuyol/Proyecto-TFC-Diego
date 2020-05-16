@@ -48,6 +48,7 @@ public class Movimiento : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == lugarVictoria)
