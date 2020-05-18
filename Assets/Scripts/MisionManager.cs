@@ -76,7 +76,7 @@ public class MisionManager : MonoBehaviour
     {
         misionesCompletadas++;
 
-        if (misionesCompletadas >= 5)
+        if (misionesCompletadas >= GameSettings.missionsNeeded)
             return true;
 
         bool ok = true;
