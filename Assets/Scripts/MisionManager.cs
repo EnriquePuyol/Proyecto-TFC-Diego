@@ -10,6 +10,17 @@ public class MisionManager : MonoBehaviour
     public GameObject MisionBar;
     public GameObject MisionComisaria;
 
+    [SerializeField]
+    GameObject anilloCasaPrincipal;
+    [SerializeField]
+    GameObject anilloCasaAbuela;
+    [SerializeField]
+    GameObject anilloColegio;
+    [SerializeField]
+    GameObject anilloBar;
+    [SerializeField]
+    GameObject anilloComisaria;
+
     public Transform[] SpawnPoints;
 
     private string MisionCasaPrincipalText = "LLEGA A TU CASA";
@@ -74,6 +85,12 @@ public class MisionManager : MonoBehaviour
 
     public bool CompletarMision()
     {
+        anilloCasaPrincipal.SetActive(false);
+        anilloCasaAbuela.SetActive(false);
+        anilloColegio.SetActive(false);
+        anilloBar.SetActive(false);
+        anilloComisaria.SetActive(false);
+
         misionesCompletadas++;
 
         if (misionesCompletadas >= GameSettings.missionsNeeded)
@@ -104,30 +121,35 @@ public class MisionManager : MonoBehaviour
             case 1:
                 MisionText.text = MisionCasaPrincipalText;
                 player.lugarVictoria = ColliderCasaPrincipal;
+                anilloCasaPrincipal.SetActive(true);
                 if(misionesCompletadas == 0)
                     SetPlayerPosition(SpawnPoints[0].position);
                 break;
             case 2:
                 MisionText.text = MisionCasaAbuelaText;
                 player.lugarVictoria = ColliderCasaAbuela;
+                anilloCasaAbuela.SetActive(true);
                 if (misionesCompletadas == 0)
                     SetPlayerPosition(SpawnPoints[0].position);
                 break;
             case 3:
                 MisionText.text = MisionColegioText;
                 player.lugarVictoria = ColliderColegio;
+                anilloColegio.SetActive(true);
                 if (misionesCompletadas == 0)
                     SetPlayerPosition(SpawnPoints[2].position);
                 break;
             case 4:
                 MisionText.text = MisionBarText;
                 player.lugarVictoria = ColliderBar;
+                anilloBar.SetActive(true);
                 if (misionesCompletadas == 0)
                     SetPlayerPosition(SpawnPoints[1].position);
                 break;
             case 5:
                 MisionText.text = MisionComisariaText;
                 player.lugarVictoria = ColliderComisaria;
+                anilloComisaria.SetActive(true);
                 if (misionesCompletadas == 0)
                     SetPlayerPosition(SpawnPoints[1].position);
                 break;
