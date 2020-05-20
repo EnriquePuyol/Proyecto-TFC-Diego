@@ -6,7 +6,7 @@ public static class GameSettings
 {
     static bool modoDificil = false;
 
-    public static int missionsNeeded = 0;
+    public static int missionsNeeded = 5;
 
     public static void SetGameDifficulty(bool dif)
     {
