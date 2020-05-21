@@ -49,6 +49,7 @@ public class Reloj : MonoBehaviour
         if(player.vivo == true)
             ActualizarReloj(tiempoAMostrarEnSegundos);
     }
+
     public void ActualizarReloj(float tiempoEnSegundos)
     {
         int minutos = 0;
