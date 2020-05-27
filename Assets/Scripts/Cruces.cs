@@ -18,6 +18,12 @@ public class Cruces : MonoBehaviour
         do
         {
             rand = Random.Range(0, vecinos.Length);
+
+            if(vecinos[rand] == null)
+            {
+                Debug.Log(this.gameObject.name + "tiene un vecino = null en el vecino numero: " + rand);
+            }
+
         } while (vecinos[rand].transform == actual);
 
         return vecinos[rand];
